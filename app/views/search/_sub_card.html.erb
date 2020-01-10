@@ -1,0 +1,18 @@
+<div class="card" style="width: 20rem;">
+  <div class="card-body">
+    <h5 class="card-title">Japanese: <%= entry["japanisch"] %></h5>
+    <p class="card-text">
+      <b>Jisho:</b> <%= if entry["jisho"].class == String then entry["jisho"] else entry["jisho"].join(', ') end %><br>
+      <b>Link:</b> <%= entry["jisho_link"] %><br>
+      <br>
+      <b>Buddhdic:</b> <%= entry["buddhdic"].tr('[""]', '') %><br>
+      <b>Link:</b> <%= entry["buddhdic_link"] %><br>
+      <br>
+      <b>CJK:</b> <%= entry["cjk"].tr('[""]', '') %><br>
+      <b>Link:</b> <%= entry["cjk_link"] %><br>
+      <br>
+      <b>Number of Combinations:</b> <%= entry["kombinationen"].size %><br>
+      <b>Combinations:</b><br> <%= if entry["kombinationen"].class == String then entry["kombinationen"] else entry["kombinationen"].join("<br>").html_safe end %><br>
+    </p>
+  </div>
+</div>

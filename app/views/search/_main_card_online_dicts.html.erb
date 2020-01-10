@@ -1,0 +1,15 @@
+<div class="card" style="width: 20rem;">
+  <div class="card-body">
+    <h5 class="card-title">Online Dictionaries: <%= entry["japanisch"] %></h5>
+    <p class="card-text">
+      <b>Jisho:</b> <%= if entry["jisho"].class == String then entry["jisho"] else entry["jisho"].join(', ') end %><br> <!-- eigt in helper datei -->
+      <b>Link:</b> <%= entry["jisho_link"] %><br>
+      <br>
+      <b>Buddhdic:</b> <%= entry["buddhic"].tr('[""]', '') %><br>
+      <b>Link:</b> <%= entry["buddhdic_link"] %><br>
+      <br>
+      <b>CJK:</b> <%= entry["cjk"].tr('[""]', '') %><br>
+      <b>Link:</b> <%= entry["cjk_link"] %><br>
+    </p>
+  </div>
+</div>

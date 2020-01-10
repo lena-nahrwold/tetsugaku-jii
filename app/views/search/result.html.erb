@@ -1,0 +1,17 @@
+<%= render 'layouts/search_bar' %>  
+<div class="jumbotron">
+    <div class="col-sm-12 mx-auto">
+        <% if @main_selection.empty? %>
+            <h5>Keine Einträge vorhanden.</h5>
+        <% else %>
+            <div class="card-columns">
+                <% @sub_selection.each do |entry| %>
+                    <%= render partial: 'sub_card', locals: { entry: entry } %>
+                <% end %>
+                <% @main_selection.each do |entry| %>
+                    <%= render partial: 'main_card', locals: { entry: entry } %>
+                <% end %>
+            </div>
+        <% end %>
+    </div>
+</div>

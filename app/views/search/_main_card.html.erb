@@ -1,0 +1,13 @@
+<div class="card" style="width: 20rem;">
+  <div class="card-body">
+    <h5 class="card-title">Japanese: <%= entry["japanisch"] %></h5>
+    <p class="card-text">
+      <b>English:</b> <%= entry["englisch"] %><br>
+      <b>Reading:</b> <%= entry["lautschrift"] %><br>
+      <b>Page Number:</b> <%= entry["seitenzahl"] %><br>
+    </p>
+    <% unless @word %>
+      <%= link_to "show entry", details_path(entry["japanisch"]), class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
