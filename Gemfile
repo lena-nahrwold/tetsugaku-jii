@@ -61,6 +61,7 @@ gem 'high_voltage'
 gem 'pg', '~> 0.18'
 gem 'pundit'
 gem 'thin'
+gem 'devise-bootstrap-views', '~> 1.0'
 
 group :development do
   gem 'better_errors'
