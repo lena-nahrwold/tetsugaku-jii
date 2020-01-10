@@ -2,10 +2,9 @@
 <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= content_for?(:title) ? yield(:title) : "Rails Devise Pundit" %></title>
-    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Rails Devise Pundit" %>">
+    <title><%= content_for?(:title) ? yield(:title) : "Tetsugaku-Jii" %></title>
+    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Rails Bootstrap" %>">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
   </head>
@@ -14,8 +13,12 @@
       <%= render 'layouts/navigation' %>
     </header>
     <main role="main">
-       <%= render 'layouts/messages' %>
-       <%= yield %>
+      <!-- Page Content -->
+      <div class="container">
+        <%= render 'layouts/messages' %>
+        <%= yield %>
+      </div>
+      <!-- /.container -->
     </main>
   </body>
 </html>
