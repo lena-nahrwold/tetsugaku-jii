@@ -1,4 +1,4 @@
-<div class="card" style="width: 20rem;">
+<div class="card w-100">
   <div class="card-body">
     <h5 class="card-title">Japanese: <%= entry["japanisch"] %></h5>
     <p class="card-text">
@@ -6,7 +6,7 @@
       <b>Reading:</b> <%= entry["lautschrift"] %><br>
       <b>Page Number:</b> <%= entry["seitenzahl"] %><br>
     </p>
-    <% unless @word %>
+    <% if !@word && user_signed_in? %>
       <%= link_to "show entry", details_path(entry["japanisch"]), class: "btn btn-primary" %>
     <% end %>
   </div>
