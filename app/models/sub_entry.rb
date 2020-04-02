@@ -1,0 +1,2 @@
+class SubEntry < ApplicationRecord
+end

@@ -10,10 +10,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200319130619) do
+ActiveRecord::Schema.define(version: 20200402161611) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "main_entries", force: :cascade do |t|
+    t.string "japanese"
+    t.string "english"
+    t.string "phonetics"
+    t.string "page"
+    t.json   "jisho"
+    t.string "jisho_link"
+    t.json   "buddhdic"
+    t.string "buddhdic_link"
+    t.json   "cjk"
+    t.string "cjk_link"
+    t.json   "symbols"
+  end
+
+  create_table "sub_entries", force: :cascade do |t|
+    t.string "japanese"
+    t.json   "jisho"
+    t.string "jisho_link"
+    t.json   "buddhdic"
+    t.string "buddhdic_link"
+    t.json   "cjk"
+    t.string "cjk_link"
+    t.string "combinations_amount"
+    t.json   "combinations"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "",    null: false

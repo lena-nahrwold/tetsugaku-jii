@@ -1,0 +1,2 @@
+class MainEntry < ApplicationRecord
+end
