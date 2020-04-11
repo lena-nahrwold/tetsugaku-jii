@@ -1,13 +1,13 @@
 <div class="card w-100">
   <div class="card-body">
-    <h5 class="card-title">Japanese: <%= entry["japanisch"] %></h5>
+    <h5 class="card-title">Japanese: <%= entry["japanese"] %></h5>
     <p class="card-text">
-      <b>English:</b> <%= entry["englisch"] %><br>
-      <b>Reading:</b> <%= entry["lautschrift"] %><br>
-      <b>Page Number:</b> <%= entry["seitenzahl"] %><br>
+      <b>English:</b> <%= entry["english"] %><br>
+      <b>Reading:</b> <%= entry["phonetics"] %><br>
+      <b>Page Number:</b> <%= entry["page"] %><br>
     </p>
     <% if !@word && user_signed_in? %>
-      <%= link_to "show entry", details_path(entry["japanisch"]), class: "btn btn-primary" %>
+      <%= link_to "show entry", details_path(entry["japanese"]), class: "btn btn-primary" %>
     <% end %>
   </div>
 </div>

@@ -1,18 +1,15 @@
 <div class="card w-100">
   <div class="card-body">
-    <h5 class="card-title">Japanese: <%= entry["japanisch"] %></h5>
+    <h5 class="card-title">Japanese: <%= entry["japanese"] %></h5>
     <p class="card-text">
-      <b>Jisho:</b> <%= if entry["jisho"].class == String then entry["jisho"] else entry["jisho"].join(', ') end %><br>
-      <b>Link:</b> <%= entry["jisho_link"] %><br>
+      <b><%= if not entry["jisho"].eql? "no entry yet" then link_to "Jisho:", entry["jisho_link"] else "Jisho: " end %></b> <%= if entry["jisho"].class == String then entry["jisho"] else entry["jisho"].join(', ') end %>
       <br>
-      <b>Buddhdic:</b> <%= entry["buddhdic"].tr('[""]', '') %><br>
-      <b>Link:</b> <%= entry["buddhdic_link"] %><br>
+      <b><%= if not entry["buddhdic"].eql? "no entry yet" then link_to "Buddhdic:", entry["buddhdic_link"] else "Buddhdic: " end %></b> <%= entry["buddhdic"].tr('[""]', '') %>
       <br>
-      <b>CJK:</b> <%= entry["cjk"].tr('[""]', '') %><br>
-      <b>Link:</b> <%= entry["cjk_link"] %><br>
+      <b><%= if not entry["cjk"].eql? "no entry yet" then link_to "CJK:", entry["cjk_link"] else "CJK: " end %></b> <%= entry["cjk"].tr('[""]', '') %> <br>
       <br>
-      <b>Number of Combinations:</b> <%= entry["kombinationen"].size %><br>
-      <b>Combinations:</b><br> <%= if entry["kombinationen"].class == String then entry["kombinationen"] else entry["kombinationen"].join("<br>").html_safe end %><br>
+      <b>Number of Combinations:</b> <%= entry["combinations"].size %><br>
+      <b>Combinations:</b><br> <%= if entry["combinations"].class == String then entry["combinations"] else entry["combinations"].join("<br>").html_safe end %><br>
     </p>
   </div>
 </div>

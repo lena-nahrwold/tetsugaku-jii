@@ -2,14 +2,11 @@
   <div class="card-body">
     <h5 class="card-title">Online Dictionaries: <%= entry["japanisch"] %></h5>
     <p class="card-text">
-      <b>Jisho:</b> <%= if entry["jisho"].class == String then entry["jisho"] else entry["jisho"].join(', ') end %><br> <!-- eigt in helper datei -->
-      <b>Link:</b> <%= entry["jisho_link"] %><br>
+      <b><%= if not entry["jisho"].eql? "no entry yet" then link_to "Jisho:", entry["jisho_link"] else "Jisho: " end %></b> <%= if entry["jisho"].class == String then entry["jisho"] else entry["jisho"].join(', ') end %>
       <br>
-      <b>Buddhdic:</b> <%= entry["buddhic"].tr('[""]', '') %><br>
-      <b>Link:</b> <%= entry["buddhdic_link"] %><br>
+      <b><%= if not entry["buddhdic"].eql? "no entry yet" then link_to "Buddhdic:", entry["buddhdic_link"] else "Buddhdic: " end %></b> <%= entry["buddhdic"].tr('[""]', '') %>
       <br>
-      <b>CJK:</b> <%= entry["cjk"].tr('[""]', '') %><br>
-      <b>Link:</b> <%= entry["cjk_link"] %><br>
+      <b><%= if not entry["cjk"].eql? "no entry yet" then link_to "CJK:", entry["cjk_link"] else "CJK: " end %></b> <%= entry["cjk"].tr('[""]', '') %>
     </p>
   </div>
 </div>
