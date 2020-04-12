@@ -1,7 +1,5 @@
 class SearchController < ApplicationController
 
-  # https://melvinchng.github.io/rails/SearchFeature.html#43-adding-a-simple-search-feature
-
   def home
   end
 
@@ -22,7 +20,6 @@ class SearchController < ApplicationController
   def get_entry_for(search_term)
     japanese_selection = MainEntry.all.where("japanese LIKE :search", search: search_term)
     return japanese_selection
-
   end
 
   def get_main_selection_for(search_term)
