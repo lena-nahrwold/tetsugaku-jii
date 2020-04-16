@@ -6,6 +6,14 @@
       <b>Reading:</b> <%= entry["phonetics"] %><br>
       <b>Page Number:</b> <%= entry["page"] %><br>
     </p>
+    <% if @word %>
+       <b>Comment:</b>
+       <%= form_for(entry) do |f| %>
+           <%= f.text_area :comment %>
+           <%= f.submit 'Save', :class => 'btn btn-primary btn-sm' %>
+       <% end %>
+       <br>
+    <% end %>
     <% if !@word && user_signed_in? %>
       <%= link_to "show entry", details_path(entry["japanese"]), class: "btn btn-primary" %>
     <% end %>
