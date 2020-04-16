@@ -6,7 +6,7 @@
       <b>Reading:</b> <%= entry["phonetics"] %><br>
       <b>Page Number:</b> <%= entry["page"] %><br>
     </p>
-    <% if @word %>
+    <% if @word && user_signed_in? && (current_user.try(:admin?) || current_user.try(:vip?)) %>
        <b>Comment:</b>
        <%= form_for(entry) do |f| %>
            <%= f.text_area :comment %>

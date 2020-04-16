@@ -1,6 +1,6 @@
 class MainEntriesController < ApplicationController
     before_action :authenticate_user!
-    # before_action :admin_only, :except => :show
+    before_action :authorized_only
 
     def update
       @main_entry = MainEntry.find(params[:id])
@@ -13,8 +13,8 @@ class MainEntriesController < ApplicationController
 
     private
 
-    def admin_only
-      unless current_user.admin?
+    def authorized_only
+      unless current_user.admin? || current_user.vip?
         redirect_to root_path, :alert => "Access denied."
       end
     end
