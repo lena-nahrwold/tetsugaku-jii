@@ -14,7 +14,7 @@ class SubEntriesController < ApplicationController
     private
 
     def authorized_only
-      unless current_user.admin? || current_user.vip?
+      if current_user.role.eql? "user"
         redirect_to root_path, :alert => "Access denied."
       end
     end
