@@ -9,7 +9,11 @@
       <b><%= if not entry["cjk"].eql? "no entry yet" then link_to "CJK:", entry["cjk_link"] else "CJK: " end %></b> <%= entry["cjk"].tr('[""]', '') %> <br>
       <br>
       <b>Number of Combinations:</b> <%= entry["combinations"].size %><br>
-      <b>Combinations:</b><br> <%= if entry["combinations"].class == String then entry["combinations"] else entry["combinations"].join("<br>").html_safe end %><br>
+      <b>Combinations:</b><br>
+        <% entry.combinations.each do |c| %>
+          <%= link_to c, "https://www.tetsugaku-jii.org/details/#{c}" %>
+          <br>
+        <% end %>
     </p>
   </div>
 </div>
