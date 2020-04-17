@@ -18,6 +18,11 @@
        <% end %>
        <br>
     <% end %>
+    <% if @word && user_signed_in? && current_user.try(:user?) %>
+        <b>Comment:</b>
+        <%= entry.comment %><br>
+        <br>
+    <% end %>
     <% if !@word && user_signed_in? %>
       <%= link_to "show entry", details_path(entry.japanese), class: "btn btn-primary" %>
     <% end %>

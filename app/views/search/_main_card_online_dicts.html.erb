@@ -7,6 +7,20 @@
       <b><%= if not entry["buddhdic"].eql? "no entry yet" then link_to "Buddhdic:", entry["buddhdic_link"] else "Buddhdic: " end %></b> <%= entry["buddhdic"].tr('[""]', '') %>
       <br>
       <b><%= if not entry["cjk"].eql? "no entry yet" then link_to "CJK:", entry["cjk_link"] else "CJK: " end %></b> <%= entry["cjk"].tr('[""]', '') %>
+      <br>
+      <% if !entry.dict_comment.blank? && current_user.try(:user?) %>
+        <br>
+        <b>Comment:</b> <%= entry.dict_comment %><br>
+      <% end %>
+      <% if current_user.try(:admin?) || current_user.try(:vip?) %>
+        <br>
+        <b>Comment:</b>
+        <%= form_for(entry) do |f| %>
+           <%= f.text_area :dict_comment %>
+           <%= f.submit 'Save', :class => 'btn btn-primary btn-sm' %>
+        <% end %>
+       <br>
+      <% end %>
     </p>
   </div>
 </div>
