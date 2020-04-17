@@ -5,7 +5,7 @@
       <b><%= if not entry["jisho"].eql? "no entry yet" then link_to "Jisho:", entry["jisho_link"] else "Jisho: " end %></b>
       <% if (entry["jisho"].include? "no entry yet") && user_signed_in? && (current_user.try(:admin?) || current_user.try(:vip?)) %>
          <%= form_for(entry) do |f| %>
-             <%= f.text_area :jisho %>
+             <%= f.text_area :jisho, :rows => 2, style: 'width:100%;' %>
              <%= f.submit 'Save', :class => 'btn btn-primary btn-sm' %>
          <% end %>
       <% else %>
@@ -15,7 +15,7 @@
       <b><%= if not entry["buddhdic"].eql? "no entry yet" then link_to "Buddhdic:", entry["buddhdic_link"] else "Buddhdic: " end %></b>
       <% if (entry["buddhdic"].include? "no entry yet") && user_signed_in? && (current_user.try(:admin?) || current_user.try(:vip?)) %>
          <%= form_for(entry) do |f| %>
-             <%= f.text_area :buddhdic %>
+             <%= f.text_area :buddhdic, :rows => 2, style: 'width:100%;' %>
              <%= f.submit 'Save', :class => 'btn btn-primary btn-sm' %>
          <% end %>
       <% else %>
@@ -25,7 +25,7 @@
       <b><%= if not entry["cjk"].eql? "no entry yet" then link_to "CJK:", entry["cjk_link"] else "CJK: " end %></b>
       <% if (entry["cjk"].include? "no entry yet") && user_signed_in? && (current_user.try(:admin?) || current_user.try(:vip?)) %>
          <%= form_for(entry) do |f| %>
-             <%= f.text_area :cjk %>
+             <%= f.text_area :cjk, :rows => 2, style: 'width:100%;' %>
              <%= f.submit 'Save', :class => 'btn btn-primary btn-sm' %>
          <% end %>
       <% else %>
@@ -40,7 +40,7 @@
         <br>
         <b>Comment:</b>
         <%= form_for(entry) do |f| %>
-           <%= f.text_area :dict_comment %>
+           <%= f.text_area :dict_comment, :rows => 10, style: 'width:100%;' %>
            <%= f.submit 'Save', :class => 'btn btn-primary btn-sm' %>
         <% end %>
        <br>
