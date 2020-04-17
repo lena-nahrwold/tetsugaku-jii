@@ -5,7 +5,7 @@
       <b>English:</b> <%= entry.english %><br>
       <b>Reading:</b> <%= entry.phonetics %><br>
       <b>Page Number:</b> <%= entry.page %><br>
-      <% if !entry.comment.blank? %>
+      <% if !@word && !entry.comment.blank? %>
         <br>
         <b>Comment:</b> <%= entry.comment %><br>
       <% end %>
