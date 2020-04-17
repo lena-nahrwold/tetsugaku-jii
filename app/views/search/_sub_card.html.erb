@@ -2,11 +2,36 @@
   <div class="card-body">
     <h5 class="card-title">Japanese: <%= entry["japanese"] %></h5>
     <p class="card-text">
-      <b><%= if not entry["jisho"].eql? "no entry yet" then link_to "Jisho:", entry["jisho_link"] else "Jisho: " end %></b> <%= if entry["jisho"].class == String then entry["jisho"] else entry["jisho"].join(', ') end %>
+      <b><%= if not entry["jisho"].eql? "no entry yet" then link_to "Jisho:", entry["jisho_link"] else "Jisho: " end %></b>
+      <% if (entry["jisho"].include? "no entry yet") && user_signed_in? && (current_user.try(:admin?) || current_user.try(:vip?)) %>
+         <%= form_for(entry) do |f| %>
+             <%= f.text_area :jisho %>
+             <%= f.submit 'Save', :class => 'btn btn-primary btn-sm' %>
+         <% end %>
+      <% else %>
+        <%= if entry["jisho"].class == String then entry["jisho"] else entry["jisho"].join(', ') end %>
+      <% end %>
       <br>
-      <b><%= if not entry["buddhdic"].eql? "no entry yet" then link_to "Buddhdic:", entry["buddhdic_link"] else "Buddhdic: " end %></b> <%= entry["buddhdic"].tr('[""]', '') %>
+      <b><%= if not entry["buddhdic"].eql? "no entry yet" then link_to "Buddhdic:", entry["buddhdic_link"] else "Buddhdic: " end %></b>
+      <% if (entry["buddhdic"].include? "no entry yet") && user_signed_in? && (current_user.try(:admin?) || current_user.try(:vip?)) %>
+         <%= form_for(entry) do |f| %>
+             <%= f.text_area :buddhdic %>
+             <%= f.submit 'Save', :class => 'btn btn-primary btn-sm' %>
+         <% end %>
+      <% else %>
+        <%= entry["buddhdic"].tr('[""]', '') %>
+      <% end %>
       <br>
-      <b><%= if not entry["cjk"].eql? "no entry yet" then link_to "CJK:", entry["cjk_link"] else "CJK: " end %></b> <%= entry["cjk"].tr('[""]', '') %> <br>
+      <b><%= if not entry["cjk"].eql? "no entry yet" then link_to "CJK:", entry["cjk_link"] else "CJK: " end %></b>
+      <% if (entry["cjk"].include? "no entry yet") && user_signed_in? && (current_user.try(:admin?) || current_user.try(:vip?)) %>
+         <%= form_for(entry) do |f| %>
+             <%= f.text_area :cjk %>
+             <%= f.submit 'Save', :class => 'btn btn-primary btn-sm' %>
+         <% end %>
+      <% else %>
+        <%= entry["cjk"].tr('[""]', '') %>
+      <% end %>
+      <br>
       <br>
       <b>Number of Combinations:</b> <%= entry["combinations"].size %><br>
       <b>Combinations:</b><br>

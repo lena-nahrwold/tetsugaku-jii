@@ -12,5 +12,6 @@ Rails.application.routes.draw do
   resources :users
 
   resources :main_entries, only: [:update]
+  resources :sub_entries, only: [:update]
 
 end
