@@ -34,7 +34,7 @@
       <br>
       <% if !entry.dict_comment.blank? && current_user.try(:user?) %>
         <br>
-        <b>Comment:</b> <%= entry.dict_comment %><br>
+        <b>Comment:</b> <%= simple_format(strip_tags(entry.dict_comment)) %><br>
       <% end %>
       <% if current_user.try(:admin?) || current_user.try(:vip?) %>
         <br>

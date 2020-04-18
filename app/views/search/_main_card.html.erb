@@ -7,7 +7,7 @@
       <b>Page Number:</b> <%= entry.page %><br>
       <% if !@word && !entry.comment.blank? %>
         <br>
-        <b>Comment:</b> <%= entry.comment %><br>
+        <b>Comment:</b> <%= simple_format(strip_tags(entry.comment)) %><br>
       <% end %>
     </p>
     <% if @word && user_signed_in? && (current_user.try(:admin?) || current_user.try(:vip?)) %>
@@ -20,8 +20,7 @@
     <% end %>
     <% if @word && user_signed_in? && current_user.try(:user?) && !entry.comment.blank? %>
         <b>Comment:</b>
-        <%= entry.comment %><br>
-        <br>
+        <%= simple_format(strip_tags(entry.comment)) %><br>
     <% end %>
     <% if !@word && user_signed_in? %>
       <%= link_to "show entry", details_path(entry.japanese), class: "btn btn-primary" %>
