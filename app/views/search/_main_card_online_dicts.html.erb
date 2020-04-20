@@ -26,10 +26,7 @@
       <% if current_user.try(:admin?) || current_user.try(:vip?) %>
         <br>
         <b>Comment:</b><br>
-        <%= form_for(entry) do |f| %>
-          <%= f.text_area :dict_comment, :rows => 10, style: 'width:100%;' %>
-          <%= f.submit 'Save', :class => 'btn btn-primary btn-sm' %>
-        <% end %>
+        <%= best_in_place entry, :dict_comment, :as => :textarea, :display_with => :simple_format, :place_holder => "Write comment..." %>
       <% end %>
       <% if !entry.dict_comment.blank? && current_user.try(:user?) %>
         <br>

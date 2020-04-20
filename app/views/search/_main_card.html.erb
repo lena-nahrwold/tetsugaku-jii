@@ -13,7 +13,7 @@
     </p>
     <% if @word && user_signed_in? && (current_user.try(:admin?) || current_user.try(:vip?)) %>
        <b>Comment:</b><br>
-       <%= best_in_place entry, :comment, :as => :textarea, :display_with => :simple_format %>
+       <%= best_in_place entry, :comment, :as => :textarea, :display_with => :simple_format, :place_holder => "Write comment..." %>
        <br>
     <% end %>
     <% if @word && user_signed_in? && current_user.try(:user?) && !entry.comment.blank? %>
