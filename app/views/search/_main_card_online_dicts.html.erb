@@ -25,12 +25,13 @@
       <br>
       <% if !entry.dict_comment.blank? && current_user.try(:user?) %>
         <br>
-        <b>Comment:</b> <%= simple_format(strip_tags(entry.dict_comment)) %><br>
+        <b>Comment:</b><br>
+        <%= simple_format(strip_tags(entry.dict_comment)) %><br>
       <% end %>
       <% if current_user.try(:admin?) || current_user.try(:vip?) %>
         <br>
         <b>Comment:</b><br>
-        <%= best_in_place entry, :dict_comment, :as => :textarea, :display_with => :simple_format %>
+        <%= best_in_place entry, :dict_comment %>
         <br>
       <% end %>
     </p>
