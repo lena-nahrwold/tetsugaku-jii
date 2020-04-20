@@ -31,7 +31,7 @@
       <% if current_user.try(:admin?) || current_user.try(:vip?) %>
         <br>
         <b>Comment:</b><br>
-        <%= best_in_place entry, :dict_comment %>
+        <%= best_in_place entry, :dict_comment, :as => :textarea, :display_with => :simple_format %>
         <br>
       <% end %>
     </p>
