@@ -23,16 +23,18 @@
         <%= entry["cjk"].tr('[""]', '') %>
       <% end %>
       <br>
+      <% if current_user.try(:admin?) || current_user.try(:vip?) %>
+        <br>
+        <b>Comment:</b><br>
+        <%= form_for(entry) do |f| %>
+          <%= f.text_area :dict_comment, :rows => 10, style: 'width:100%;' %>
+          <%= f.submit 'Save', :class => 'btn btn-primary btn-sm' %>
+        <% end %>
+      <% end %>
       <% if !entry.dict_comment.blank? && current_user.try(:user?) %>
         <br>
         <b>Comment:</b><br>
         <%= simple_format(strip_tags(entry.dict_comment)) %><br>
-      <% end %>
-      <% if current_user.try(:admin?) || current_user.try(:vip?) %>
-        <br>
-        <b>Comment:</b><br>
-        <%= best_in_place entry, :dict_comment, :as => :textarea, :display_with => :simple_format %>
-        <br>
       <% end %>
     </p>
   </div>
