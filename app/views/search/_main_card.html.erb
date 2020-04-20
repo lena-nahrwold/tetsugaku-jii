@@ -11,11 +11,8 @@
       <% end %>
     </p>
     <% if @word && user_signed_in? && (current_user.try(:admin?) || current_user.try(:vip?)) %>
-       <b>Comment:</b>
-       <%= form_for(entry) do |f| %>
-           <%= f.text_area :comment, :rows => 10, style: 'width:100%;' %>
-           <%= f.submit 'Save', :class => 'btn btn-primary btn-sm' %>
-       <% end %>
+       <b>Comment:</b><br>
+       <%= best_in_place entry, :comment, :as => :textarea, :display_with => :simple_format %>
        <br>
     <% end %>
     <% if @word && user_signed_in? && current_user.try(:user?) && !entry.comment.blank? %>
