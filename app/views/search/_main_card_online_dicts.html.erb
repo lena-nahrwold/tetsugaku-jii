@@ -1,6 +1,6 @@
 <div class="card w-100">
   <div class="card-body">
-    <h5 class="card-title">Online Dictionaries: <%= entry["japanisch"] %></h5>
+    <h5 class="card-title">Online Dictionaries: <%= entry["japanese"] %></h5>
     <p class="card-text">
       <b><%= if not entry["jisho_link"].eql? "-" then link_to "Jisho:", entry["jisho_link"] else "Jisho: " end %></b>
       <% if user_signed_in? && (current_user.try(:admin?) || current_user.try(:vip?)) %>

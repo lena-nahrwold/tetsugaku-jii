@@ -5,11 +5,6 @@
       <b>English:</b> <%= entry.english %><br>
       <b>Reading:</b> <%= entry.phonetics %><br>
       <b>Page Number:</b> <%= entry.page %><br>
-      <% if !@word && !entry.comment.blank? %>
-        <br>
-        <b>Comment:</b><br>
-        <%= simple_format(strip_tags(entry.comment)) %><br>
-      <% end %>
     </p>
     <% if @word && user_signed_in? && (current_user.try(:admin?) || current_user.try(:vip?)) %>
        <b>Comment:</b><br>
@@ -22,6 +17,40 @@
     <% end %>
     <% if !@word && user_signed_in? %>
       <%= link_to "show entry", details_path(entry.japanese), class: "btn btn-primary" %>
+    <% end %>
+    <% if @word %>
+      <hr>
+      <b><%= if not entry["jisho_link"].eql? "-" then link_to "Jisho:", entry["jisho_link"] else "Jisho: " end %></b>
+        <% if user_signed_in? && (current_user.try(:admin?) || current_user.try(:vip?)) %>
+          <%= best_in_place entry, :jisho, :as => :input %>
+        <% else %>
+          <%= if entry["jisho"].class == String then entry["jisho"] else entry["jisho"].join(', ') end %>
+        <% end %>
+        <br>
+        <b><%= if not entry["buddhdic_link"].eql? "-" then link_to "Buddhdic:", entry["buddhdic_link"] else "Buddhdic: " end %></b>
+        <% if user_signed_in? && (current_user.try(:admin?) || current_user.try(:vip?)) %>
+          <%= best_in_place entry, :buddhdic, :as => :input %>
+        <% else %>
+          <%= entry["buddhdic"].tr('[""]', '') %>
+        <% end %>
+        <br>
+        <b><%= if not entry["cjk_link"].eql? "-" then link_to "CJK:", entry["cjk_link"] else "CJK: " end %></b>
+        <% if user_signed_in? && (current_user.try(:admin?) || current_user.try(:vip?)) %>
+          <%= best_in_place entry, :cjk, :as => :input %>
+        <% else %>
+          <%= entry["cjk"].tr('[""]', '') %>
+        <% end %>
+        <br>
+        <% if current_user.try(:admin?) || current_user.try(:vip?) %>
+        <br>
+        <b>Comment:</b><br>
+          <%= best_in_place entry, :dict_comment, :as => :textarea, :display_with => :simple_format, :place_holder => "Write comment..." %>
+        <% end %>
+        <% if !entry.dict_comment.blank? && current_user.try(:user?) %>
+        <br>
+        <b>Comment:</b><br>
+          <%= simple_format(strip_tags(entry.dict_comment)) %><br>
+        <% end %>
     <% end %>
   </div>
 </div>

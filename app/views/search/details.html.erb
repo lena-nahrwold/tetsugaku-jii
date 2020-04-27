@@ -1,11 +1,8 @@
-<%= render 'layouts/search_bar' %>  
+<%= render 'layouts/search_bar' %>
 <div class="jumbotron">
   <div class="card-columns">
     <% @main_selection.each do |entry| %>
       <%= render partial: 'main_card', locals: { entry: entry } %>
-    <% end %>
-    <% @main_selection.each do |entry| %>
-      <%= render partial: 'main_card_online_dicts', locals: { entry: entry } %>
     <% end %>
     <% @sub_selection.each do |entry| %>
       <%= render partial: 'sub_card', locals: { entry: entry } %>
