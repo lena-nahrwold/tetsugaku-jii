@@ -23,6 +23,7 @@ gem 'coffee-rails', '~> 4.2'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
+# Use best_in_place for in-place edit forms
 gem 'best_in_place'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
@@ -32,6 +33,8 @@ gem 'jbuilder', '~> 2.5'
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
+# Use cookie_eu to add cookie consent
+gem 'cookies_eu'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
