@@ -1,42 +1,54 @@
 <div class="card w-100">
   <div class="card-body">
-    <h5 class="card-title">Japanese: <%= entry.japanese %></h5>
-    <p class="card-text">
-      <b>English:</b> <%= entry.english %><br>
-      <b>Reading:</b> <%= entry.phonetics %><br>
-      <b>Page Number:</b> <%= entry.page %><br>
-    </p>
-    <% if @word && user_signed_in? && (current_user.try(:admin?) || current_user.try(:vip?)) %>
-       <b>Comment:</b><br>
-       <%= best_in_place entry, :comment, :as => :textarea, :display_with => :simple_format, :place_holder => "Write comment..." %>
-       <br>
+    <% if !@word %>
+      <h4 class="card-title">Japanese: <%= entry.japanese %></h4>
+      <p class="card-text">
+        <b>English:</b> <%= entry.english %><br>
+        <b>Reading:</b> <%= entry.phonetics %><br>
+        <b>Page Number:</b> <%= entry.page %><br>
+      </p>
+      <% if user_signed_in? %>
+        <%= link_to "show entry", details_path(entry.japanese), class: "btn btn-primary" %>
+      <% end %>
     <% end %>
-    <% if @word && user_signed_in? && current_user.try(:user?) && !entry.comment.blank? %>
-        <b>Comment:</b>
-        <%= simple_format(strip_tags(entry.comment)) %><br>
-    <% end %>
-    <% if !@word && user_signed_in? %>
-      <%= link_to "show entry", details_path(entry.japanese), class: "btn btn-primary" %>
-    <% end %>
-    <% if @word %>
+    <% if @word && user_signed_in? %>
+      <% if current_user.try(:admin?) || current_user.try(:vip?) %>
+        <h4 class="card-title">Japanese: <%= best_in_place entry, :japanese, :as => :input %></h4>
+      <% else %>
+          <h4 class="card-title">Japanese: <%= entry.japanese %></h4>
+      <% end %>
+        <p class="card-text">
+          <b>English:</b> <%= entry.english %><br>
+          <b>Reading:</b> <%= entry.phonetics %><br>
+          <b>Page Number:</b> <%= entry.page %><br>
+        </p>
+      <% if current_user.try(:admin?) || current_user.try(:vip?) %>
+        <b>Comment:</b><br>
+          <%= best_in_place entry, :comment, :as => :textarea, :display_with => :simple_format, :place_holder => "Write comment..." %>
+        <br>
+      <% end %>
+      <% if current_user.try(:user?) && !entry.comment.blank? %>
+          <b>Comment:</b>
+          <%= simple_format(strip_tags(entry.comment)) %><br>
+      <% end %>
       <hr>
       <b><%= if not entry["jisho_link"].eql? "-" then link_to "Jisho:", entry["jisho_link"] else "Jisho: " end %></b><br>
         <% if user_signed_in? && (current_user.try(:admin?) || current_user.try(:vip?)) %>
-          <%= best_in_place entry, :jisho, :as => :textarea %>
+          <%= best_in_place entry, :jisho, :as => :textarea, :display_with => :simple_format %>
         <% else %>
           <%= if entry["jisho"].class == String then entry["jisho"] else entry["jisho"].join(', ') end %>
         <% end %>
-        <br><br>
+        <br>
         <b><%= if not entry["buddhdic_link"].eql? "-" then link_to "Buddhdic:", entry["buddhdic_link"] else "Buddhdic: " end %></b><br>
         <% if user_signed_in? && (current_user.try(:admin?) || current_user.try(:vip?)) %>
-          <%= best_in_place entry, :buddhdic, :as => :textarea %>
+          <%= best_in_place entry, :buddhdic, :as => :textarea, :display_with => :simple_format %>
         <% else %>
           <%= entry["buddhdic"].tr('[""]', '') %>
         <% end %>
-        <br><br>
+        <br>
         <b><%= if not entry["cjk_link"].eql? "-" then link_to "CJK:", entry["cjk_link"] else "CJK: " end %></b><br>
         <% if user_signed_in? && (current_user.try(:admin?) || current_user.try(:vip?)) %>
-          <%= best_in_place entry, :cjk, :as => :textarea %>
+          <%= best_in_place entry, :cjk, :as => :textarea, :display_with => :simple_format %>
         <% else %>
           <%= entry["cjk"].tr('[""]', '') %>
         <% end %>
