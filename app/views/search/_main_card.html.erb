@@ -20,23 +20,23 @@
     <% end %>
     <% if @word %>
       <hr>
-      <b><%= if not entry["jisho_link"].eql? "-" then link_to "Jisho:", entry["jisho_link"] else "Jisho: " end %></b>
+      <b><%= if not entry["jisho_link"].eql? "-" then link_to "Jisho:", entry["jisho_link"] else "Jisho: " end %></b><br>
         <% if user_signed_in? && (current_user.try(:admin?) || current_user.try(:vip?)) %>
-          <%= best_in_place entry, :jisho, :as => :input %>
+          <%= best_in_place entry, :jisho, :as => :textarea %>
         <% else %>
           <%= if entry["jisho"].class == String then entry["jisho"] else entry["jisho"].join(', ') end %>
         <% end %>
-        <br>
-        <b><%= if not entry["buddhdic_link"].eql? "-" then link_to "Buddhdic:", entry["buddhdic_link"] else "Buddhdic: " end %></b>
+        <br><br>
+        <b><%= if not entry["buddhdic_link"].eql? "-" then link_to "Buddhdic:", entry["buddhdic_link"] else "Buddhdic: " end %></b><br>
         <% if user_signed_in? && (current_user.try(:admin?) || current_user.try(:vip?)) %>
-          <%= best_in_place entry, :buddhdic, :as => :input %>
+          <%= best_in_place entry, :buddhdic, :as => :textarea %>
         <% else %>
           <%= entry["buddhdic"].tr('[""]', '') %>
         <% end %>
-        <br>
-        <b><%= if not entry["cjk_link"].eql? "-" then link_to "CJK:", entry["cjk_link"] else "CJK: " end %></b>
+        <br><br>
+        <b><%= if not entry["cjk_link"].eql? "-" then link_to "CJK:", entry["cjk_link"] else "CJK: " end %></b><br>
         <% if user_signed_in? && (current_user.try(:admin?) || current_user.try(:vip?)) %>
-          <%= best_in_place entry, :cjk, :as => :input %>
+          <%= best_in_place entry, :cjk, :as => :textarea %>
         <% else %>
           <%= entry["cjk"].tr('[""]', '') %>
         <% end %>
