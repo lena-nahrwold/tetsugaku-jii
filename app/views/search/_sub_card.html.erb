@@ -4,7 +4,7 @@
     <p class="card-text">
       <b><%= if not entry["jisho_link"].eql? "-" then link_to "Jisho:", entry["jisho_link"] else "Jisho: " end %></b><br>
       <% if user_signed_in? && (current_user.try(:admin?) || current_user.try(:vip?)) %>
-        <%= best_in_place entry, :jisho, :as => :textarea, :display_with => :simple_format %>
+        <%= best_in_place entry, :jisho, :as => :textarea %>
       <% else %>
         <%= if entry["jisho"].class == String then entry["jisho"] else entry["jisho"].join(', ') end %>
       <% end %>
