@@ -1,14 +1,18 @@
 <%= render 'layouts/search_bar' %>
 <div class="jumbotron">
     <div class="col-sm-12 mx-auto">
-        <% if @main_selection.empty? %>
-            <h5>No entries available.</h5>
-        <% else %>
-            <div class="card-columns">
-                <% @main_selection.each do |entry| %>
-                    <%= render partial: 'main_card', locals: { entry: entry } %>
-                <% end %>
-            </div>
-        <% end %>
+      <% if user_signed_in? %>
+          <% if @main_selection.empty? %>
+              <h5>No entries available.</h5>
+          <% else %>
+              <div class="card-columns">
+                  <% @main_selection.each do |entry| %>
+                      <%= render partial: 'main_card', locals: { entry: entry } %>
+                  <% end %>
+              </div>
+          <% end %>
+      <% else %>
+        <h5>Please sign up first.</h5>
+      <% end %>
     </div>
 </div>
