@@ -3,7 +3,7 @@
     <h3>Users</h3>
       <table class="table">
         <tbody>
-          <% @users.each do |user| %>
+          <% @users.order('created_at DESC').each do |user| %>
             <tr>
               <%= render user %>
             </tr>
