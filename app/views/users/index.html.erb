@@ -5,7 +5,7 @@
         <tbody>
           <% @users.order('created_at DESC').each do |user| %>
             <tr>
-              <%= render user %>
+              <%= render user if user.confirmed_at != nil %>
             </tr>
           <% end %>
         </tbody>
