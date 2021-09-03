@@ -2,7 +2,7 @@
   <%= link_to user.email, user %>
 </td>
 <td>
-  Created at: <%= user.created_at %>
+  <%= user.created_at.strftime("Created on %m/%d/%Y") %>
 </td>
 <td>
   <%= form_for(user) do |f| %>
