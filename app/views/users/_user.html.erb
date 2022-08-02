@@ -5,6 +5,9 @@
   <%= user.created_at.strftime("Created on %m/%d/%Y") %>
 </td>
 <td>
+  <%= user.confirmed_at.strftime("Confirmed on %m/%d/%Y") %>
+</td>
+<td>
   <%= form_for(user) do |f| %>
     <%= f.select(:role, User.roles.keys.map {|role| [role.titleize,role]}) %>
     <%= f.submit 'Change Role', :class => 'btn btn-primary btn-sm' %>
